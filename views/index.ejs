@@ -9,11 +9,36 @@
   <body>
     <!-- including the navbar partial -->
     <%- include('partials/navbar', page) %>
-    <div class="flex flex-col justify-center items-center py-12" >
-        <h1 class="text-5xl font-bold">The Straw Hat Pirates</h1>
-          <p class="py-6">
-            The crew sailing toward the title of King of the Pirates
-          </p>
+    <div class="flex flex-col justify-center items-center py-12">
+      <h1 class="text-5xl font-bold">The Straw Hat Pirates</h1>
+      <p class="py-6">
+        The crew sailing toward the title of King of the Pirates
+      </p>
+    </div>
+    <div class="card-collection grid xl:grid-cols-3 lg:grid-cols-2 gap-4 mx-8 justify-center">
+        <% for(let i = 0; i < memberData.length; i++){%>
+    <div class="crew-card w-md border-2 shadow-2xl p-6 rounded-lg">
+      <div class="card-h flex justify-between">
+        <h3><%= memberData[i].name %></h3>
+        <% if(memberData[i].status == "active"){ %>
+        <button class="btn btn-primary bg-green-500 border-green-500">Active</button>
+        <% } else if(memberData[i].status == "pending"){ %>
+        <button class="btn btn-primary bg-yellow-400 border-yellow-400">Pending Approval</button>
+        <% } else { %>
+        <button class="btn btn-primary bg-red-500 border-red-500">Bounty Frozen</button>
+        <% } %>
+      </div>
+      <p class="py-2">ROLE: <%= memberData[i].role%></p>
+      <p class="py-2">DEVIL FRUIT: <%= memberData[i].devilFruit%></p>
+      <!-- Still have to implement the "," in the bounty amount -->
+      <p class="py-2">BOUNTY: <%= memberData[i].bounty.toLocaleString()%> Berries</p>
+      <a href="/crew"
+        ><div class="view-all flex">
+          <button class="btn btn-primary ml-auto">View All Crew</button>
+        </div></a
+      >
+    </div>
+    <% } %>
     </div>
   </body>
 </html>
