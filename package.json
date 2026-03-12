@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --watch server.js",
-    "tw:build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+    "tw:build": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/output.css --watch"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.1",
+    "autoprefixer": "^10.4.27",
     "daisyui": "^5.5.19",
+    "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1"
   }
 }

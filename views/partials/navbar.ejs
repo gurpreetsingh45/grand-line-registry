@@ -1,0 +1,45 @@
+<div class="navbar bg-base-100 shadow-sm">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <!-- Got this hamburger syle svg from internet-->
+        <a
+          ><svg
+            class="swap-off fill-yellow"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
+            style="fill: #c59f61"
+          >
+            <path
+              d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+            />
+          </svg>
+        </a>
+      </div>
+      <ul
+        tabindex="-1"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+      >
+        <li><a href="/">Home</a></li>
+        <li><a href="/crew">Crew</a></li>
+        <li><a href="/recruit">Recruit</a></li>
+        <li><a href="/log-pose">Log Pose</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-ghost text-xl">⚓ Grand Line Registry</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="/">Home</a></li>
+      <li><a href="/crew">Crew</a></li>
+      <li><a href="/recruit">Recruit</a></li>
+      <li><a href="/log-pose">Log Pose</a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-end hidden lg:flex pr-4">
+    <span class="badge badge-outline badge-lg"><%= page %></span>
+  </div>
+</div>
