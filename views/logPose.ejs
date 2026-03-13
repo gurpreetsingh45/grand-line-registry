@@ -3,25 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Secret Log Pose</title>
+    <title>Log Pose - Grand Line Registry</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>" />
     <link rel="stylesheet" href="/css/output.css" />
   </head>
   <body>
     <%- include('partials/navbar', { page: 'Secret Log Pose' }) %>
-
     <div class="mx-auto px-4 py-8">
       <!-- Request log info alert -->
       <div role="alert" class="alert alert-info mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
+        <span><b>LAST REQUEST:</b></span>
         <span><%= log %></span>
       </div>
 
       <!-- Destination heading -->
       <div class="mb-8">
-        <h1 class="text-5xl font-bold mb-2">Destination Reached</h1>
-        <p class="text-lg">The Log Pose has guided the Thousand Sunny to the legendary island of <strong>Laugh Tale</strong> — the final destination at the end of the Grand Line where the One Piece awaits.</p>
+        <h1 class="text-5xl font-bold mb-2">🗺️ Destination Reached</h1>
+        <p class="text-lg">You've made it to the final island at the end of the Grand Line. Only the most determined pirates reach this place. Listed below are the active crew members who completed the journey. </p>
       </div>
 
       <!-- Active crew summary table -->

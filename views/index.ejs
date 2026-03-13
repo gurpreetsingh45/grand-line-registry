@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HomePage</title>
+    <title>Grand Line Registry</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>" />
     <link rel="stylesheet" href="/css/output.css" />
   </head>
   <body>
@@ -15,10 +16,17 @@
         The crew sailing toward the title of King of the Pirates
       </p>
     </div>
-    <div class="card-collection grid xl:grid-cols-3 lg:grid-cols-2 gap-4 mx-8 justify-center">
+    <!-- <div class="card-collection grid xl:grid-cols-3 lg:grid-cols-2 gap-4 mx-8 justify-center">
         <% for(let i = 0; i < memberData.length; i++){%>
     <div class="crew-card w-md border-2 shadow-2xl p-6 rounded-lg">
-      <div class="card-h flex justify-between">
+      
+    </div>
+    <% } %> -->
+    <div class="card-collection grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 mx-8">
+  <% for(let i = 0; i < memberData.length; i++){ %>
+  <div class="crew-card w-full border-2 shadow-2xl p-6 rounded-lg">
+    <!-- rest of your card stays the same -->
+     <div class="card-h flex justify-between">
         <h3><%= memberData[i].name %></h3>
         <% if(memberData[i].status == "active"){ %>
         <button class="btn btn-primary bg-green-500 border-green-500">Active</button>
@@ -36,8 +44,10 @@
           <button class="btn btn-primary ml-auto">View All Crew</button>
         </div></a
       >
-    </div>
-    <% } %>
+  </div>
+  <% } %>
+</div>
     </div>
   </body>
 </html>
+
