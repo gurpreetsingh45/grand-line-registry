@@ -119,6 +119,13 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/crew", (req, res) => {
+  res.render("crew.ejs", {
+    page: "Crew Roster",
+    memberData: crewMembers,
+  });
+});
+
 // Error-Handler test
 app.get("/error-test", (req, res) => {
   throw Error("Engine Malfunction!");

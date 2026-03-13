@@ -1,4 +1,7 @@
 @import "tailwindcss";
- @plugin "daisyui" {
-   themes: coffee --default, coffee --prefersdark;
- }
+@plugin "daisyui" {
+  themes:
+    coffee --default,
+    coffee --prefersdark;
+}
+@plugin "@tailwindcss/typography";

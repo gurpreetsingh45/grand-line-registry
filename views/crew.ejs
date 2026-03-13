@@ -3,10 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Crew Data</title>
+    <link rel="stylesheet" href="/css/output.css" />
   </head>
   <body>
     <!-- including the navbar partial -->
     <%- include('partials/navbar', page) %>
+    <div class="flex my-8 ml-4 flex-col ">
+      <h1 class="text-5xl font-bold" >Crew Roster</h1>
+      <p>All registered members of the Straw Hat Pirates</p>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="table table-zebra">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Devil Fruit</th>
+            <th>Bounties (Berries)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          <%for( let i = 0; i < memberData.length; i++){%>
+          <tr>
+            <td><%= memberData[i].id%></td>
+            <td><%= memberData[i].name%></td>
+            <td><%= memberData[i].role%></td>
+            <td><%= memberData[i].devilFruit%></td>
+            <td><%= memberData[i].bounty.toLocaleString()%></td>
+            <td><% if(memberData[i].status == "active"){ %>
+              <button class="btn btn-primary bg-green-500 border-green-500">Active</button>
+            <% } else if(memberData[i].status == "pending"){ %>
+              <button class="btn btn-primary bg-yellow-400 border-yellow-400">Pending Approval</button>
+            <% } else { %>
+              <button class="btn btn-primary bg-red-500 border-red-500">Bounty Frozen</button>
+            <% } %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
