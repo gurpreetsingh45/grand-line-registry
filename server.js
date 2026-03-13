@@ -1,3 +1,14 @@
+/********************************************************************************
+* WEB322-Assignment 02
+*
+* I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
+*
+* Name: Gurpreet Singh Student ID: 143124246 Date: 13-03-2026
+*
+********************************************************************************/
 // Starter data
 const crewMembers = [
   {
@@ -133,6 +144,7 @@ app.get("/recruit", (req, res) => {
   });
 });
 
+// form submission (server side validation)
 app.post("/recruit", (req, res) => {
   const { applicantName, skill, role, message, sea, agreeTerms } = req.body;
   const errors = [];
@@ -163,6 +175,14 @@ app.post("/recruit", (req, res) => {
   res.render("recruit.ejs", {
     page: "Join the Crew",
     success: true,
+  });
+});
+
+app.get("/log-pose", verifyBounty, (req, res) => {
+  res.render("logPose.ejs", {
+    page: "Secret Log Pose",
+    crew: crewMembers,
+    log: req.log,
   });
 });
 
