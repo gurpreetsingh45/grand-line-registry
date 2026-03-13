@@ -1,16 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="coffee">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Join the Crew</title>
+    <link rel="stylesheet" href="/css/output.css" />
   </head>
   <body>
-    <!-- including the navbar partial -->
-    <%- include('partials/navbar') %>
+    <%- include('partials/navbar', page) %>
+
+    <div class="flex my-8 ml-4 flex-col">
+      <h1 class="text-5xl font-bold">Join the Crew</h1>
+      <p>Think you have what it takes to sail with the Grand Line?</p>
+    </div>
+
+    <% if (locals.errors && errors.length > 0) { %>
+    <div class="alert alert-error mx-8 mb-4">
+      <ul class="list-disc list-inside">
+        <% errors.forEach(function(err) { %>
+        <li><%= err %></li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } %>
+
+    <% if (locals.success) { %>
+    <div class="alert alert-success mx-8 mb-4">
+      <span>Your application has been submitted! Luffy will review it shortly.</span>
+    </div>
+    <% } %>
+
+    <form action="/recruit" method="POST" class="grid grid-cols-3 p-8 gap-8">
+      <div class="flex flex-col space-y-2">
+        <label for="applicantName">Your Name</label>
+        <input
+          type="text"
+          id="applicantName"
+          name="applicantName"
+          placeholder="Enter your name"
+          class="input border-2 border-yellow-500 rounded-sm"
+        />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="skill">Special Skill</label>
+        <input
+          type="text"
+          id="skill"
+          name="skill"
+          placeholder="e.g. Swordsmanship, Navigation"
+          class="input border-2 border-yellow-500 rounded-sm"
+        />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="role">Desired Role</label>
+        <select
+          id="role"
+          name="role"
+          class="select input border-2 border-yellow-500 rounded-sm"
+        >
+          <option selected>Select a role</option>
+          <option value="Navigator">Navigator</option>
+          <option value="Cook">Cook</option>
+          <option value="Sniper">Sniper</option>
+          <option value="Doctor">Doctor</option>
+          <option value="Musician">Musician</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col space-y-2 col-span-3">
+        <label for="message">Why should Luffy let you join?</label>
+        <textarea
+          id="message"
+          name="message"
+          class="textarea border-2 border-yellow-500 rounded-sm h-24"
+          placeholder="Explain your dream and what you will bring to the team..."
+        ></textarea>
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label class="pb-2">Preferred Sea</label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="sea" value="East Blue" />
+          East Blue
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="sea" value="West Blue" />
+          West Blue
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="sea" value="North Blue" />
+          North Blue
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="sea" value="South Blue" />
+          South Blue
+        </label>
+      </div>
+
+      <div class="flex items-start col-span-2 pt-6">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" name="agreeTerms" value="true" class="checkbox" />
+          I understand the risks of the Grand Line
+        </label>
+      </div>
+
+      <div class="col-span-3">
+        <button type="submit" class="btn btn-info w-full">Submit Application</button>
+      </div>
+    </form>
   </body>
 </html>
-
-<div class="navbar-end hidden sm:flex pr-4">
-    <span class="badge badge-outline badge-lg">The Crew</span>
-  </div>

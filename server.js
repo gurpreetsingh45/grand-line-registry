@@ -88,6 +88,7 @@ const path = require("path");
 const HTTP_PORT = process.env.HTTP_PORT || 8080;
 
 app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/views"));
 app.use(express.static(__dirname + "/public"));
 // 2.1 Request logger
@@ -123,6 +124,45 @@ app.get("/crew", (req, res) => {
   res.render("crew.ejs", {
     page: "Crew Roster",
     memberData: crewMembers,
+  });
+});
+
+app.get("/recruit", (req, res) => {
+  res.render("recruit.ejs", {
+    page: "Join the Crew",
+  });
+});
+
+app.post("/recruit", (req, res) => {
+  const { applicantName, skill, role, message, sea, agreeTerms } = req.body;
+  const errors = [];
+
+  if (!applicantName || !applicantName.trim()) errors.push("Name is required.");
+  if (!skill || !skill.trim()) errors.push("Special skill is required.");
+  if (!role || role === "Select a role") errors.push("Please select a desired role.");
+  if (!message || !message.trim()) errors.push("Message is required.");
+  if (!sea) errors.push("Please select a preferred sea.");
+  if (!agreeTerms) errors.push("You must agree to the risks of the Grand Line.");
+
+  if (errors.length > 0) {
+    return res.render("recruit.ejs", {
+      page: "Join the Crew",
+      errors,
+    });
+  }
+
+  crewMembers.push({
+    id: crewMembers.length + 1,
+    name: applicantName.trim(),
+    role: role,
+    bounty: 0,
+    devilFruit: "Unknown",
+    status: "pending",
+  });
+
+  res.render("recruit.ejs", {
+    page: "Join the Crew",
+    success: true,
   });
 });
 
